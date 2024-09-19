@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: rgb(45, 23, 23); color:aliceblue;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addlanguage(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+    }
+    addlanguage("python");
+    addlanguage("Typescript");
+    // the method of appending child at last is not efficient for large projects because each time we call the function it is traversing the whole tree each time, so we also use it in optimized way 
+    function addOptimizeLang(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    addOptimizeLang("php");
+
+    //Edit elements in DOM------------
+    const secondLang = document.querySelector('li:nth-child(2)');
+    // secondLang.innerHTML = ".net";
+    const newli = document.createElement('li');
+    newli.textContent = "Mojo";
+    secondLang.replaceWith(newli);
+
+    // Edit:----
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = '<li>Typescript</li>';
+
+    //remove:---
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove();
+</script>
+</html>
