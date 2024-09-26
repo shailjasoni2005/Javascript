@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html basics</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing images</h2>
+    <div>
+        <ul id="images">
+            <!-- onclick="alert('owl')" [this is not a feasible approach to do this alert.]--> 
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""  ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // second approach to add onclick event.But this method also have problem in onclick event instead we should use event listeners, for more features.
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked");
+    // };
+
+    // using event listeners 
+    // one more method we can use is attachEvent:-
+
+    document.getElementById('images').addEventListener('click',function(e){
+        console.log(e);
+        
+    },false)    
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log("Owl");
+        e.stopPropagation();   //If we use this then event will not bubble from owl to pointerEvent.
+        
+    },false)   
+     /* Event Propagation:--There are two content in this :-
+        1.event bubbling.  :- usually event propagation is used by default in markets we call event bubbling . Bottom to up if two events are false.
+        2.event capturing. :- In some scenerios we use event capturing. Top to bottom if two events are true.
+        "here false is by default but sometimes it is required to write true or false here" */
+
+
+
+    /* here in pointerEvent addEventListener we need to study :--- 
+    type,timestamp,defaultPrevented, 
+    target,toElement , srcElement,currentTarget,  
+    clientX , clientY,screenX,sccreenY,titlX,tiltY.
+
+    altKey,ctrlKey,shiftKey,keyCode
+    */
+
+//    in our google link , we want that it should not open google.com if we click on it then we can use defaultPrevented() method.
+
+document.getElementById('google').addEventListener('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("google clicked");
+    
+},false);
+
+
+
+ </script>
+ </html>

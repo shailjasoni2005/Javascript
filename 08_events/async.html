@@ -1,0 +1,72 @@
+<!-- 
+async in javascript.
+
+Default Javascript:--
+         1.Synchronous : code is excecuted line by line , one by one. By default js is always Synchronous.
+         2.Single Threaded : Means everything executed on single thread so it is slow as compared to multithreaded language but there is'nt any engine of only js, engine is always found in runtime enviornment and it can be of node.js,browser , etc.
+
+Excecution context:- 
+         -> Execute one line of code at a time.
+         -> Each operation waits for the last one to complete before executing.
+
+
+There are two type of code are written in js:--
+         1.Blocking code:  Blocks the flow of program. -> Read file synchronous.
+         2.Non-blocking code: Does not block execution. ->Read file asynchronous.
+
+In the image : 
+         We can see there is an alone js engine which is build using memory heap and call stack.
+         And there is a web API :
+         And task queue: This makes js fast and asynchronous.
+
+WE CAN SEE THE EXPLANATION IN VIDEO OF ASYNC FUNDAMENTALS IN JS . AND CODE WILL BE THERE IN FILE OF ASYNC. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <h1>Javascript</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // setTimeout() is a function/method in async which contains handler:-which is a function who have no name,or it can have name when we give it as a reference 
+    // and here in this method we also needs timeOut 
+
+    // setTimeout(function(){
+    //     console.log("javascript");
+    // },2000)
+
+    // we can also
+
+    // const sayJS = function(){
+    //     console.log("javascript");
+    // }
+
+    // setTimeout(sayJS,2000);
+
+    // Then:----
+
+    const sayJS = function(){
+        console.log("javascript");
+    }
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = 'js is easy';
+    }
+    // setTimeout(changeText,2000);
+
+    // To stop this setTimeout we use clearTimeout
+    const changeMe=setTimeout(changeText,2000)
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeMe);
+        console.log("Stopped");
+        
+    })
+     
+</script>
+</html>

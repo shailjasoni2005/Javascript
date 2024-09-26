@@ -1,0 +1,1 @@
+// All events in js runs sequentially but there are some exceptions 
