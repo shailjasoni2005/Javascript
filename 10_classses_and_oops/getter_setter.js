@@ -1,3 +1,4 @@
+// getter setter using class
 class User {
     constructor(email, password){
         this.email = email;
